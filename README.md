@@ -6,6 +6,7 @@
 > * Ürünler listelendi.
 > * Ürün detay sayfası oluşturuldu.
 > * Ürün ekleme ve çıkarma fonksiyonlarıyla birlikte sepet eklendi.
+<br/>
 
 ## ASP.NET Core WEB API & React 18.1.0
 [Neil Cummings'in](https://www.udemy.com/user/neil-cummings-2/) `"Learn to build an e-commerce store with .Net, React & Redux"` Udemy Kursu takip edilerek geliştirilen Web Uygulaması
