@@ -21,7 +21,7 @@
 
 <br/>
 
-<img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset3.png" alt="ReStoreCatalog{id}" title="ReStoreCatalog{id}">
+<img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset3.1.png" alt="ReStoreCatalog{id}" title="ReStoreCatalog{id}">
 
 <br/>
 
