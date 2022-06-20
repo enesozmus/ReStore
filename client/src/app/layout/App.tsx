@@ -8,6 +8,7 @@ import AboutPage from "../../features/about/AboutPage";
 import BasketPage from "../../features/basket/BasketPage";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
+import CheckoutPage from "../../features/checkout/CheckoutPage";
 import HomePage from "../../features/home/HomePage";
 import agent from "../api/agent";
 import { useStoreContext } from "../context/ReStoreContext";
@@ -76,6 +77,7 @@ function App() {
           <Route path='/about' element={<AboutPage />} />
           <Route path='/contact' element={<ContactPage />} />
           <Route path='/basket' element={<BasketPage />} />
+          <Route path='/checkout' element={<CheckoutPage />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Container>

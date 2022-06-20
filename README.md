@@ -1,11 +1,12 @@
 # Re-Store
 > *  ['http://localhost:5000/api/Products'] ve ['http://localhost:5000/api/Basket'] url'lerini tüketen ilk React uygulamam
-> *  Tamamlanma Oranı: %35
+> *  Tamamlanma Oranı: %40
 
 ## İzlence
-> * Ürünler listelendi.
+> * Ürünlerin listelendiği Catalog sayfası oluşturuldu.
 > * Ürün detay sayfası oluşturuldu.
-> * Ürün ekleme ve çıkarma fonksiyonlarıyla birlikte sepet eklendi.
+> * Ürün ekleme, çıkarma ve toplam fiyat fonksiyonlarıyla birlikte sepet eklendi.
+> * Ürün detay sayfasında o ürüne dair adet güncelleyebilme fonksiyonu eklendi.
 <br/>
 
 ## ASP.NET Core WEB API & React 18.1.0
