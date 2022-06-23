@@ -1,4 +1,5 @@
 using ReStore.API.Middleware;
+using ReStore.Application;
 using ReStore.Infrastructure;
 using ReStore.Infrastructure.SeedData;
 
@@ -7,11 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 #region @ Layers @
 
 builder.Services.ConfigureInfrastructureServices(builder.Configuration);
-//builder.Services.ConfigureApplicationServices();
+builder.Services.ConfigureApplicationServices();
 
 #endregion
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+        .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

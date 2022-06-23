@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { StoreProvider } from './app/context/ReStoreContext';
 import App from './app/layout/App';
+import { store } from './app/store/configureStore';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -11,11 +12,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <StoreProvider>
+
+      <Provider store={store}>
 
         <App />
 
-      </StoreProvider>
+      </Provider>
+
     </BrowserRouter>
   </React.StrictMode>
 );

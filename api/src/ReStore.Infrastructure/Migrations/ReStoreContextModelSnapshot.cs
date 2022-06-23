@@ -101,6 +101,30 @@ namespace ReStore.Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("ReStore.Domain.Entities.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+                });
+
             modelBuilder.Entity("ReStore.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -114,6 +138,9 @@ namespace ReStore.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ColorId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
@@ -146,6 +173,8 @@ namespace ReStore.Infrastructure.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("ColorId");
+
                     b.ToTable("Products");
                 });
 
@@ -176,7 +205,14 @@ namespace ReStore.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("ReStore.Domain.Entities.Color", "Color")
+                        .WithMany("Products")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("Category");
+
+                    b.Navigation("Color");
                 });
 
             modelBuilder.Entity("ReStore.Domain.Entities.Basket", b =>
@@ -185,6 +221,11 @@ namespace ReStore.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("ReStore.Domain.Entities.Category", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("ReStore.Domain.Entities.Color", b =>
                 {
                     b.Navigation("Products");
                 });

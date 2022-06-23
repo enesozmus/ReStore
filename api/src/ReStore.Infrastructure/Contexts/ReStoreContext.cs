@@ -13,6 +13,7 @@ public class ReStoreContext : DbContext
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Basket> Baskets { get; set; }
+        public DbSet<Color> Colors { get; set; }
 
         #endregion
 
@@ -22,6 +23,7 @@ public class ReStoreContext : DbContext
         {
                 modelBuilder.ApplyConfiguration(new CategoryConfiguration());
                 modelBuilder.ApplyConfiguration(new ProductConfiguration());
+                modelBuilder.ApplyConfiguration(new ColorConfiguration());
 
                 base.OnModelCreating(modelBuilder);
         }

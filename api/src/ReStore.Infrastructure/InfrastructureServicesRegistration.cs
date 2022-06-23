@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using ReStore.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
+using ReStore.Application.IRepositories;
+using ReStore.Infrastructure.Repositories;
 
 namespace ReStore.Infrastructure;
 
@@ -15,6 +17,12 @@ public static class InfrastructureServicesRegistration
 
                 #endregion
 
+                #region Repositories
+
+                services.AddScoped<IProductReadRepository, ProductReadRepository>();
+                services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
+
+                #endregion
 
                 return services;
         }
