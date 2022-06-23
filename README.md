@@ -1,12 +1,13 @@
 # Re-Store
 > *  ['http://localhost:5000/api/Products'] ve ['http://localhost:5000/api/Basket'] url'lerini tüketen ilk React uygulamam
-> *  Tamamlanma Oranı: %40
+> *  Tamamlanma Oranı: %55
 
 ## İzlence
 > * Ürünlerin listelendiği Catalog sayfası oluşturuldu.
 > * Ürün detay sayfası oluşturuldu.
 > * Ürün ekleme, çıkarma ve toplam fiyat fonksiyonlarıyla birlikte sepet eklendi.
 > * Ürün detay sayfasında o ürüne dair adet güncelleyebilme fonksiyonu eklendi.
+> * Ürünlerin listelenmesine ek olarak sayfalama, sıralama ve filtreleme fonksiyonları eklendi.
 <br/>
 
 ## ASP.NET Core WEB API & React 18.1.0
@@ -17,7 +18,11 @@
 
 <br/>
 
-<img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset2.png" alt="ReStoreCatalog" title="ReStoreCatalog">
+<img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset2.1.png" alt="ReStoreCatalog" title="ReStoreCatalog">
+
+<br/>
+
+<img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset2.2.png" alt="ReStoreCatalog" title="Filter">
 
 <br/>
 
