@@ -1,11 +1,14 @@
 import { Container, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AboutPage from "../../features/about/AboutPage";
+import { fetchCurrentUser } from "../../features/account/accountSlice";
+import Login from "../../features/account/Login";
+import Register from "../../features/account/Register";
 import BasketPage from "../../features/basket/BasketPage";
-import { setBasket } from "../../features/basket/basketSlice";
+import { fetchBasketAsync, setBasket } from "../../features/basket/basketSlice";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
 import CheckoutPage from "../../features/checkout/CheckoutPage";
@@ -17,24 +20,27 @@ import { useAppDispatch } from "../store/configureStore";
 import { getCookie } from "../util/util";
 import Header from "./Header";
 import LoadingComponent from "./LoadingComponent";
+import { PrivateRoute } from "./PrivateRoute";
 
 function App() {
 
-  // Basket
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const buyerId = getCookie('buyerId');
-    if (buyerId) {
-      agent.Basket.get()
-        .then(basket => dispatch(setBasket(basket)))
-        .catch(error => console.log(error))
-        .finally(() => setLoading(false))
-    } else {
-      setLoading(false);
+  const initApp = useCallback(async () => {
+    try {
+      await dispatch(fetchCurrentUser());
+      await dispatch(fetchBasketAsync());
+    } catch (error) {
+      console.log(error);
     }
   }, [dispatch])
+
+
+  // useEffect
+  useEffect(() => {
+    initApp().then(() => setLoading(false));
+  }, [initApp])
 
   // Dark Mode
   const [darkMode, setDarkMode] = useState(false)
@@ -61,7 +67,7 @@ function App() {
       <ToastContainer
         position="top-right"
         hideProgressBar={true}
-        autoClose={3000}
+        autoClose={5000}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
@@ -78,7 +84,12 @@ function App() {
           <Route path='/about' element={<AboutPage />} />
           <Route path='/contact' element={<ContactPage />} />
           <Route path='/basket' element={<BasketPage />} />
-          <Route path='/checkout' element={<CheckoutPage />} />
+          <Route
+            path='/checkout'
+            element={<PrivateRoute><CheckoutPage /></PrivateRoute>}
+            />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Container>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ReStore.Domain.Entities;
@@ -8,15 +9,13 @@ namespace ReStore.Infrastructure.SeedData;
 
 public class DbInitializer
 {
-        public static void Initialize(IApplicationBuilder applicationBuilder)
+        public static async Task Initialize(IApplicationBuilder applicationBuilder)
         {
                 using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
                 {
                         var context = serviceScope.ServiceProvider.GetService<ReStoreContext>();
 
                         context.Database.Migrate();
-
-
 
                         #region Categories
 

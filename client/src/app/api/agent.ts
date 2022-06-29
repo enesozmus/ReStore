@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { PaginatedResponse } from "../models/pagination";
+import { store } from "../store/configureStore";
 
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
@@ -9,6 +10,22 @@ axios.defaults.baseURL = 'http://localhost:5000/api/';
 axios.defaults.withCredentials = true;
 
 const responseBody = (response: AxiosResponse) => response.data;
+
+// # # JWT
+axios.interceptors.request.use(config => {
+
+    const token = store.getState().account.user?.token;
+    //if (token) config.headers.Authorization = `Bearer ${token}`;
+    //return config;
+    if (!config) {
+        config = {};
+    }
+    if (!config.headers) {
+        config.headers = {};
+    }
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
 
 // # # # # #
 interface ResponseData {
@@ -37,7 +54,7 @@ axios.interceptors.response.use(async (response) => {
 
     switch (status) {
         case 401:
-            toast.error(data.title);
+            toast.error(data.title || "Unauthorized");
             break;
         case 400:
             if (!!data.errors) {
@@ -92,6 +109,12 @@ const Basket = {
     removeItem: (productId: number, quantity = 1) => requests.delete(`basket?productId=${productId}&quantity=${quantity}`)
 }
 
-const agent = { Catalog, TestErrors, Basket };
+const Account = {
+    login: (values: any) => requests.post('account/login', values),
+    register: (values: any) => requests.post('account/register', values),
+    currentUser: () => requests.get('account/currentUser'),
+}
+
+const agent = { Catalog, TestErrors, Basket, Account };
 
 export default agent;

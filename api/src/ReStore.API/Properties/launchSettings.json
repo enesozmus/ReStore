@@ -1,13 +1,13 @@
 ﻿{
   "$schema": "https://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:2667",
-      "sslPort": 44302
-    }
-  },
+     "iisSettings": {
+          "windowsAuthentication": false,
+          "anonymousAuthentication": true,
+          "iisExpress": {
+               "applicationUrl": "http://localhost:2667",
+               "sslPort": 44302
+          }
+     },
   "profiles": {
     "ReStore.API": {
       "commandName": "Project",

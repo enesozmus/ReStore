@@ -1,20 +1,19 @@
 ﻿using AutoMapper;
-using ReStore.Application.CQRS;
+using ReStore.Application.DTOs;
 using ReStore.Domain.Entities;
 
 namespace ReStore.Application.Mappings;
 
 public class MappingProfile : Profile
 {
-        public MappingProfile()
-        {
-                #region Products
+      public MappingProfile()
+      {
+            #region Users
 
-                CreateMap<Product, GetProductsQueryResponse>()
-                                 .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color.Name))
-                                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.Name));
+            CreateMap<AppUser, LoginCommandResponse>().ReverseMap();
+            CreateMap<AppUser, CurrentUserQueryResponse>().ReverseMap();
 
-                #endregion
-        }
+            #endregion
+      }
 }
 
