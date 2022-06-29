@@ -121,19 +121,6 @@ public class AccountController : BaseController
      [HttpGet("currentUser")]
      public async Task<ActionResult<CurrentUserQueryResponse>> GetCurrentUser()
      {
-          // Giriş yapmış kullanıcının E-mail'ini verir
-          //var userEmail = _accessor.HttpContext.User.Identity.Name;
-          //var userEmail2 = _accessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
-
-          // Giriş yapmış kullanıcının ID'sini veriyor.
-          //var userID = _accessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-          // ikisi de null dönüyor
-          //var user0 = await _userManager.FindByNameAsync(_accessor.HttpContext.User.Identity.Name);
-          //var user1 = await _userManager.FindByEmailAsync(_accessor.HttpContext.User.Identity.Name);
-
-
-
           // Direkt giriş yapmış kullanıcıyı getirir.
           var user = _userManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
 

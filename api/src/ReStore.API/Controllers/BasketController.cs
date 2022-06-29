@@ -7,7 +7,6 @@ using ReStore.Application.DTOs;
 using ReStore.Application.Extensions;
 using ReStore.Domain.Entities;
 using ReStore.Infrastructure.Contexts;
-using System.Security.Claims;
 
 namespace ReStore.API.Controllers
 {
@@ -35,6 +34,8 @@ namespace ReStore.API.Controllers
 
                return basket.MapBasketToDto();
           }
+
+          #region Add and Remove
 
           // api/basket?productId=3&quantity=2
           [HttpPost]
@@ -76,10 +77,10 @@ namespace ReStore.API.Controllers
                return BadRequest(new ProblemDetails { Title = "Ürünü sepetten çıkarmada bir sorun yaşanıyor!" });
           }
 
+          #endregion
 
 
-
-          #region Sepeti Getir
+          #region Retrieve Basket
 
           private async Task<Basket> RetrieveBasket(string buyerId)
           {
@@ -101,7 +102,8 @@ namespace ReStore.API.Controllers
           }
           #endregion
 
-          #region Sepet Yoksa Oluştur
+
+          #region Create Basket if it doesn't exist
 
           private Basket CreateBasket()
           {
@@ -120,101 +122,6 @@ namespace ReStore.API.Controllers
                return basket;
           }
 
-          #endregion
-
-
-          #region Giriş Yapmamış Kullanıcıya Atanan Buyer ID
-
-
-          //private string GetBuyerId()
-          //{
-          //     string CurrentUserName = _accessor.HttpContext?.User.Identity?.Name;
-
-          //     // return null
-          //     var userID = _accessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-          //     // return null
-          //     var userEmail = User.FindFirstValue(ClaimTypes.Email);
-          //     var userEmail1 = _accessor.HttpContext.User.Identity.Name;
-          //     var userEmail2 = _accessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
-
-          //     // return null
-          //     var user = _userManager.GetUserName(HttpContext.User);
-
-          //     // return null
-          //     var userTest1 = _userManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
-          //     var userTest2 = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
-
-          //     // return null
-          //     var userTest3 = User.Identity.Name;
-
-
-          //     // return null
-          //     string userName = _accessor.HttpContext.User.Identity.Name;
-
-          //     // It's works
-          //     var buyerIDTest = Request.Cookies["buyerId"];
-
-          //     if (user == null)
-          //          return Request.Cookies["buyerId"];
-          //     else
-          //          return user;
-          //}
-
-          //[Authorize]
-          //[HttpGet("GetBuyerId")]
-          //private string GetBuyerId()
-          //{
-          //     var userNameTest1 = _userService.GetMyName();
-          //     var userNameTest2 = GetMe();
-
-          //     // return null
-          //     string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-
-          //     // return null
-          //     string userNameTest3 = _accessor.HttpContext.User.Identity.Name;
-
-          //     string CurrentUserName = _accessor.HttpContext?.User.Identity?.Name;
-
-          //     // return null
-          //     var userID = _accessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-          //     // return null
-          //     var userEmail = User.FindFirstValue(ClaimTypes.Email);
-          //     var userEmail1 = _accessor.HttpContext.User.Identity.Name;
-          //     var userEmail2 = _accessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
-
-          //     // return null
-          //     var user = _userManager.GetUserName(HttpContext.User);
-
-          //     // return null
-          //     var userTest1 = _userManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
-          //     var userTest2 = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
-
-          //     // return null
-          //     var userTest3 = User.Identity.Name;
-
-
-
-
-          //     if (userNameTest1 == null)
-          //          return Request.Cookies["buyerId"];
-          //     else
-          //          return userNameTest1;
-          //}
-
-          //private async Task<string> GetBuyerIdAsync()
-          //{
-          //     var userName = _userService.GetMyName();
-          //     var buyerIDTest = Request.Cookies["buyerId"];
-
-          //     if (userName == null)
-          //          return Request.Cookies["buyerId"];
-          //     else
-          //          return userName;
-          //AppUser applicationUser = await _userManager.GetUserAsync(User); => [Authorize(AuthenticationSchemes = "Bearer")]
-
-          //}
           #endregion
 
 
