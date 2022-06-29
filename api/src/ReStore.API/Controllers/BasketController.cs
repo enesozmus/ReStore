@@ -127,6 +127,7 @@ namespace ReStore.API.Controllers
 
           #region Get UserName Or Cookies ["buyerId"]
 
+          [Authorize]
           private string GetBuyerId()
           {
                // I can't access the UserName of the logged in user
@@ -155,7 +156,7 @@ namespace ReStore.API.Controllers
           [HttpGet("GetUserName")]
           public ActionResult<string> GetMe()
           {
-               // It's works
+               // It's works and I can access the UserName of the logged in user
                var userName = _userService.GetMyName();
 
                return Ok(userName);
