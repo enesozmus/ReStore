@@ -129,10 +129,16 @@ namespace ReStore.API.Controllers
 
           private string GetBuyerId()
           {
+               // I can't access the UserName of the logged in user
+
                // return null
                var userNameTest1 = _userService.GetMyName();
                // return null
                var userNameTest2 = GetMe();
+               // return null
+               string userNameTest3 = _accessor.HttpContext.User.Identity.Name;
+               //return null
+               var user = _userManager.GetUserName(HttpContext.User);
 
                if (userNameTest1 == null)
                     return Request.Cookies["buyerId"];
