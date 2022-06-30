@@ -1,14 +1,17 @@
 # Re-Store
-> *  ['http://localhost:5000/api/Products'] ve ['http://localhost:5000/api/Basket'] url'lerini tüketen ilk React uygulamam
-> *  Tamamlanma Oranı: %70
+> *  Bir ASP.NET Core Web API tüketen ilk React uygulamam
+> *  Tamamlanma Oranı: %72
 
 ## İzlence
 > * Ürünlerin listelendiği Catalog sayfası oluşturuldu.
 > * Ürün detay sayfası oluşturuldu.
+> * Üye olmayan veya giriş yapmayan kullanıcı için sepet oluştarabilmesine olanak sağlayan buyerId cookie olarak eklendi.
+> * Kullanıcı giriş yaptığında bir buyerId varsa bu cooike direkt kullanıcı adına dönüşür.
 > * Ürün ekleme, çıkarma ve toplam fiyat fonksiyonlarıyla birlikte sepet eklendi.
 > * Ürün detay sayfasında o ürüne dair adet güncelleyebilme fonksiyonu eklendi.
 > * Ürünlerin listelenmesine ek olarak sayfalama, sıralama ve filtreleme fonksiyonları eklendi.
 > * AspNetCore.Identity kütüphanesi ve JWT kullanılarak başarılı bir şekilde Kayıt Ol/Giriş Yap fonksiyonları eklendi.
+> * Sepeti siparişe dönüştürme fonksiyonu eklendi.
 <br/>
 
 ## ASP.NET Core WEB API & React 18.1.0

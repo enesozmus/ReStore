@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ReStore.API.Extensions;
-using ReStore.API.RequestHelpers;
+using ReStore.Application.Extensions;
+using ReStore.Application.RequestHelpers;
 using ReStore.Application.IRepositories;
 using ReStore.Domain.Entities;
 using ReStore.Infrastructure.Contexts;

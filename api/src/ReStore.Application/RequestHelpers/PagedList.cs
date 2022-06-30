@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ReStore.API.RequestHelpers;
+namespace ReStore.Application.RequestHelpers;
+
 
 public class PagedList<T> : List<T>
 {

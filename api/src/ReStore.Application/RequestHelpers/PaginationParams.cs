@@ -1,4 +1,5 @@
-﻿namespace ReStore.API.RequestHelpers;
+﻿namespace ReStore.Application.RequestHelpers;
+
 
 public class PaginationParams
 {

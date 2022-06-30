@@ -1,7 +1,8 @@
-﻿using ReStore.API.RequestHelpers;
+﻿using Microsoft.AspNetCore.Http;
+using ReStore.Application.RequestHelpers;
 using System.Text.Json;
 
-namespace ReStore.API.Extensions;
+namespace ReStore.Application.Extensions;
 
 public static class HttpExtensions
 {

@@ -12,7 +12,7 @@ using ReStore.Infrastructure.Contexts;
 namespace ReStore.Infrastructure.Migrations
 {
     [DbContext(typeof(ReStoreContext))]
-    [Migration("20220626104525_mig_1")]
+    [Migration("20220630111212_mig_1")]
     partial class mig_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,14 +212,14 @@ namespace ReStore.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "18c9dad4-ba82-4d82-bdc3-e2dfcc078500",
+                            ConcurrencyStamp = "4f4e80c6-24ae-4b50-986b-7bd47785876a",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "c2f7f56c-1b35-4c62-b5a3-7b9d9e408bd9",
+                            ConcurrencyStamp = "7aafa019-a597-4804-bc3c-b087eba2b88d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -309,7 +309,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a0487000-ed21-4977-a106-1b1d330405df",
+                            ConcurrencyStamp = "e1ad6a59-3baf-4258-b61c-cd33d9bdd742",
                             Email = "enes@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Enes",
@@ -317,9 +317,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = " ENES@SEEDDATA.COM",
                             NormalizedUserName = "ENESOZMUS",
-                            PasswordHash = "AQAAAAEAACcQAAAAELkXU9LRxHIdRw99dte9JNwyCLxXCH3cp303UHrH8027BiKHlzVb3TaRIaV5hoxv0Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKoqldZVndldVEaOnNrtgdGueW7qUk59UhWRMDEPrJoPm2i37GNbFTFNsNkpEuL0fw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b38d83ed-2e6b-4682-a175-ce54eef1df61",
+                            SecurityStamp = "7c9a38ad-0f0e-4164-a4c2-0a900f83ec63",
                             TwoFactorEnabled = false,
                             UserName = "enesozmus"
                         },
@@ -327,7 +327,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "eb38bcb2-5730-4a33-a58a-8950a5e0bd14",
+                            ConcurrencyStamp = "047b88b0-fb43-456a-a7fc-6cee8cd3e4cc",
                             Email = "umay@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Umay",
@@ -335,9 +335,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "UMAY@SEEDDATA.COM",
                             NormalizedUserName = "UMAYZENGIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAECAKrJawpmqiz7HZFJ7a3/CWi95u4YXhDrCs1Nr+lIxWPmJJsauLwOM3oEwgSGj0gw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBykqOiggYdzUxKnO9b9F9/SDJsY4j/CdIIOkgoYsOpEcTgyC9gvsfAbwbZNFUbHZQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1c41c01d-020c-4b48-8a5d-ef155607930c",
+                            SecurityStamp = "3f00d50c-7ddc-4b3c-ae7b-ec3fcc7aec74",
                             TwoFactorEnabled = false,
                             UserName = "umayzengin"
                         },
@@ -345,7 +345,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "db99904a-53a2-40f4-aa0e-9b650a0add26",
+                            ConcurrencyStamp = "75134d63-3bf9-4ebe-af20-dc0180e9205d",
                             Email = "selim@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Selim",
@@ -353,9 +353,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SELIM@SEEDDATA.COM",
                             NormalizedUserName = "SELIMKARACA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAVulKLitTcBpCipwqdkxYYHY6dMqOfWSWaiF6XMLpvFOQhmWP2Y1Lf1axglUrVCiA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMjohVLPZ4Uh7+J5Dmwrv8eQdt7fX8Z+QQKBQc13KibHMYhoy/tVUmtH/Jw1pQOP6Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aba74e05-26d4-447f-bffa-6a4bef505830",
+                            SecurityStamp = "94bb8cc3-88ac-4d9e-9d7e-555a9a6f0c7a",
                             TwoFactorEnabled = false,
                             UserName = "selimkaraca"
                         },
@@ -363,7 +363,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3445f163-93ef-4318-a0ed-3a851f0fdc9e",
+                            ConcurrencyStamp = "7ea42f89-9dd3-42ce-a6e3-6681a8f8d63f",
                             Email = "emine@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Emine",
@@ -371,9 +371,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EMINE@SEEDDATA.COM",
                             NormalizedUserName = "EMINEYILDIRIM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP35wDP/sGNFAxAuf1xvD3StK5CvVzaeG12QRpJut+MDWuJtHDQuxRr9ctIY7Gh2cg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKIz7Bouea1oTM9XDZlt2+gfPtaRgaNYcmJ634PQ5mG+zZuehgRZxbIaR6SPPbbPHw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e0b4dddc-d6dd-45b8-954b-1a20cbe7bbe9",
+                            SecurityStamp = "7e1b8c85-00f2-4aa3-a47a-6cc95531adb8",
                             TwoFactorEnabled = false,
                             UserName = "emineyıldırım"
                         },
@@ -381,7 +381,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 5,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ab02033a-af14-4370-b033-f717a6d70dcb",
+                            ConcurrencyStamp = "fffc277f-eefb-458e-b9c2-995744493266",
                             Email = "ihsan@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "İhsan",
@@ -389,9 +389,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "IHSAN@SEEDDATA.COM",
                             NormalizedUserName = "IHSANYENILMEZ",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIussoruUXhsLfiBkiSGTDZnx+DWd1/RECk2ZkpO/4OLOgDbDKKselmsmCR2xieeMg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOirpxbCinrefSWybbmOyJ/H/6ipNFVjziVOKD66s0FXCRG8HCAwZ/EwwctAkz6oUA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8fe9e7fa-b3c5-4408-a4a0-e941e9469524",
+                            SecurityStamp = "ad30ddf8-def6-4ce3-82ba-152641159261",
                             TwoFactorEnabled = false,
                             UserName = "ihsanyenilmez"
                         },
@@ -399,7 +399,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 6,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bdc159b3-b1a1-4f1a-88a1-27837c9bd0f2",
+                            ConcurrencyStamp = "a76b6b2a-6320-42d7-bc3c-3f5149f7a9eb",
                             Email = "berrin@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Berrin",
@@ -407,9 +407,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BERRIN@SEEDDATA.COM",
                             NormalizedUserName = "BERRINMIRAL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAREYRvPL9aTY3vlVpP+XooipLkteK4p2islfdC9+lhReESGuHa4ezvKkdZUONSmuQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGjZdnHL5gJcQtKPKhws2fNRmtpBgaGzHDfdo2sTPwtAHLVjoutFqLFAL5FQxrlqow==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0cd502f7-0f5e-4efd-87ce-767e9667bca0",
+                            SecurityStamp = "81edc328-2042-4742-bf4d-536930c6617e",
                             TwoFactorEnabled = false,
                             UserName = "berrinmiral"
                         },
@@ -417,7 +417,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 7,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c27d3b13-a67f-42c5-9825-1c088f1c8099",
+                            ConcurrencyStamp = "da68f5c7-9ec0-40a5-a6d9-635238daf100",
                             Email = "salih@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Salih",
@@ -425,9 +425,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SALIH@SEEDDATA.COM",
                             NormalizedUserName = "SALIHYURDAKUL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIxw68VR/cfiHseCAmtnQuT+fSIylDago0K+lepTwtT0HUuamjt5Rz08AYn+bzQMXw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBomoZ/rtlzRCo0Lth/BZ61pzlT7ZmqNMnRjdR+7ZTB1TAiEfEbtmfCQssy+S6rDAg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "07e0f1ea-2bac-4e8d-8036-2d3c3fd1f6eb",
+                            SecurityStamp = "fa94f8ae-e27c-41d4-8c48-643ff82a13da",
                             TwoFactorEnabled = false,
                             UserName = "salihyurdakul"
                         },
@@ -435,7 +435,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 8,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "232f24f9-c4ad-4700-8535-dff33ca2c260",
+                            ConcurrencyStamp = "e509a44e-caa6-4200-a9df-6294755e9878",
                             Email = "zafer@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Zafer",
@@ -443,9 +443,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ZAFER@SEEDDATA.COM",
                             NormalizedUserName = "ZAFERKIRAT",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBNrPqVZF5vxDCiXs97NdpUSUOuuF+P6ebBN5ad5ivt3Z3HRl+NWsvHeCaK5rHMvxQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFBoatfa5oCWg3WIw5o99ddNBlKWp+gFKRyAiMEMJbmZKrAaADRG7e7w+ZRN/BzunA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4e718de4-e9eb-4fdf-8224-be08de359f4c",
+                            SecurityStamp = "8b3c40e8-a3bd-476c-9f91-a20b562ab826",
                             TwoFactorEnabled = false,
                             UserName = "zaferkırat"
                         },
@@ -453,7 +453,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 9,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "48329fe5-dc7c-40f4-9fd5-ce96874f4ddd",
+                            ConcurrencyStamp = "8f0803e1-858c-4583-b0fe-0ebb22f6a9b0",
                             Email = "emre@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Emre",
@@ -461,9 +461,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EMRE@SEEDDATA.COM",
                             NormalizedUserName = "EMREDEMIR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAKUlL3vI7kgKGKcapfBx9xz2DEt7MxfVaKKX8F9xWc+ws0u88LghCHibKxLQO5dsw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGAWtOWRAAx24G9ilLSjHKYXpEuooPQVoh7YDGm2O+AKigNxv1ONgsITx4IqDPIbuw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8d9f19da-1e2f-4171-b0d2-e6d6349d2703",
+                            SecurityStamp = "6e7e94bf-6aff-4255-bc1c-1ada4fdae212",
                             TwoFactorEnabled = false,
                             UserName = "emredemir"
                         },
@@ -471,7 +471,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 10,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8a20e84c-b1c3-4b39-95cd-c27ee8b57cfc",
+                            ConcurrencyStamp = "f74dada4-4f48-42a5-85d4-c7abf173b159",
                             Email = "hakan@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Hakan",
@@ -479,9 +479,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "HAKAN@SEEDDATA.COM",
                             NormalizedUserName = "HAKANFILIZ",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKCewsOJJwMNoqtcqgZtIIJxAiUGRlca24/GiiSw+F9QPoT27DEPb5TaVPXbnVJfrw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOExp6rCdd5UMTgBYy2jUIJh9TvboR9t8uWQ9eIxgTl9EMxb4ljrHs6kU7KkOvNVDw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "12192024-014d-4f61-8991-4f3a01b9a3ba",
+                            SecurityStamp = "443b0afd-dccb-4c36-b49c-56423a030ba4",
                             TwoFactorEnabled = false,
                             UserName = "hakanfiliz"
                         });
@@ -590,6 +590,59 @@ namespace ReStore.Infrastructure.Migrations
                     b.ToTable("Colors");
                 });
 
+            modelBuilder.Entity("ReStore.Domain.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BuyerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("DeliveryFee")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Subtotal")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("ReStore.Domain.Entities.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Price")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItem");
+                });
+
             modelBuilder.Entity("ReStore.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -641,6 +694,44 @@ namespace ReStore.Infrastructure.Migrations
                     b.HasIndex("ColorId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ReStore.Domain.Entities.UserAddress", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Zip")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserAddress");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -713,6 +804,87 @@ namespace ReStore.Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("ReStore.Domain.Entities.Order", b =>
+                {
+                    b.OwnsOne("ReStore.Domain.Entities.ShippingAddress", "ShippingAddress", b1 =>
+                        {
+                            b1.Property<int>("OrderId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Address1")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Address2")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("City")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Country")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("FullName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("State")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Zip")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("OrderId");
+
+                            b1.ToTable("Orders");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrderId");
+                        });
+
+                    b.Navigation("ShippingAddress")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ReStore.Domain.Entities.OrderItem", b =>
+                {
+                    b.HasOne("ReStore.Domain.Entities.Order", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId");
+
+                    b.OwnsOne("ReStore.Domain.Entities.ProductItemOrdered", "ItemOrdered", b1 =>
+                        {
+                            b1.Property<int>("OrderItemId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("PictureUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<int>("ProductId")
+                                .HasColumnType("int");
+
+                            b1.HasKey("OrderItemId");
+
+                            b1.ToTable("OrderItem");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrderItemId");
+                        });
+
+                    b.Navigation("ItemOrdered")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ReStore.Domain.Entities.Product", b =>
                 {
                     b.HasOne("ReStore.Domain.Entities.Category", "Category")
@@ -731,6 +903,21 @@ namespace ReStore.Infrastructure.Migrations
                     b.Navigation("Color");
                 });
 
+            modelBuilder.Entity("ReStore.Domain.Entities.UserAddress", b =>
+                {
+                    b.HasOne("ReStore.Domain.Entities.AppUser", null)
+                        .WithOne("Address")
+                        .HasForeignKey("ReStore.Domain.Entities.UserAddress", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ReStore.Domain.Entities.AppUser", b =>
+                {
+                    b.Navigation("Address")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ReStore.Domain.Entities.Basket", b =>
                 {
                     b.Navigation("Items");
@@ -744,6 +931,11 @@ namespace ReStore.Infrastructure.Migrations
             modelBuilder.Entity("ReStore.Domain.Entities.Color", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("ReStore.Domain.Entities.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 #pragma warning restore 612, 618
         }

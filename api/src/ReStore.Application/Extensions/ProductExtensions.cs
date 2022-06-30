@@ -1,6 +1,6 @@
 ﻿using ReStore.Domain.Entities;
 
-namespace ReStore.API.Extensions;
+namespace ReStore.Application.Extensions;
 
 public static class ProductExtensions
 {
