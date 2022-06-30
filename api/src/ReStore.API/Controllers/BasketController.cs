@@ -13,17 +13,14 @@ namespace ReStore.API.Controllers
      public class BasketController : BaseController
      {
           private readonly ReStoreContext _context;
-          private readonly UserManager<AppUser> _userManager;
           private readonly IUserService _userService;
-          private readonly IHttpContextAccessor _accessor;
 
-          public BasketController(ReStoreContext context, UserManager<AppUser> userManager, IUserService userService, IHttpContextAccessor accessor)
+          public BasketController(ReStoreContext context, IUserService userService)
           {
                _context = context;
-               _userManager = userManager;
                _userService = userService;
-               _accessor = accessor;
           }
+
 
           [HttpGet(Name = "GetBasket")]
           public async Task<ActionResult<BasketDto>> GetBasket()
@@ -127,24 +124,14 @@ namespace ReStore.API.Controllers
 
           #region Get UserName Or Cookies ["buyerId"]
 
-          [Authorize]
           private string GetBuyerId()
           {
-               // I can't access the UserName of the logged in user
+               string userName = _userService.GetMyName();
 
-               // return null
-               var userNameTest1 = _userService.GetMyName();
-               // return null
-               var userNameTest2 = GetMe();
-               // return null
-               string userNameTest3 = _accessor.HttpContext.User.Identity.Name;
-               //return null
-               var user = _userManager.GetUserName(HttpContext.User);
-
-               if (userNameTest1 == null)
+               if (userName == null)
                     return Request.Cookies["buyerId"];
                else
-                    return userNameTest1;
+                    return userName;
           }
 
           #endregion

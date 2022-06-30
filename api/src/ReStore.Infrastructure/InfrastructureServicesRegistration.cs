@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ReStore.Application.IRepositories;
 using ReStore.Infrastructure.Repositories;
 using ReStore.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace ReStore.Infrastructure;
 
@@ -35,13 +36,14 @@ public static class InfrastructureServicesRegistration
                       //options.Lockout.MaxFailedAccessAttempts = 3;
                       //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
 
-            }).AddEntityFrameworkStores<ReStoreContext>();
+            })
+               .AddEntityFrameworkStores<ReStoreContext>();
 
-            #endregion
+          #endregion
 
-            #region Repositories
+          #region Repositories
 
-            services.AddScoped<IProductReadRepository, ProductReadRepository>();
+          services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
 
             services.AddScoped<IBasketReadRepository, BasketReadRepository>();

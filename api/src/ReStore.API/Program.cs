@@ -6,7 +6,6 @@ using ReStore.API.Services;
 using ReStore.Application;
 using ReStore.Infrastructure;
 using ReStore.Infrastructure.SeedData;
-using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,17 +33,34 @@ builder.Services.AddHttpContextAccessor();
 
 #region Swagger
 
-builder.Services.AddSwaggerGen(options =>
+builder.Services.AddSwaggerGen(c =>
 {
-     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+     c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
      {
-          Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
-          In = ParameterLocation.Header,
+          Description = "Jwt auth header",
           Name = "Authorization",
-          Type = SecuritySchemeType.ApiKey
+          In = ParameterLocation.Header,
+          Type = SecuritySchemeType.ApiKey,
+          Scheme = "Bearer"
      });
-
-     options.OperationFilter<SecurityRequirementsOperationFilter>();
+     c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header
+                        },
+                        new List<string>()
+                    }
+                });
 });
 
 #endregion
@@ -56,6 +72,7 @@ builder.Services.AddCors();
 
 #endregion
 
+ConfigurationManager configuration = builder.Configuration;
 
 #region Jwt Bearer
 
@@ -65,17 +82,20 @@ builder.Services.AddAuthentication(options =>
      options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
      options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-    .AddJwtBearer(options =>
-    {
-         options.TokenValidationParameters = new TokenValidationParameters
-         {
-              ValidateIssuerSigningKey = true,
-              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
-                 .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
-              ValidateIssuer = false,
-              ValidateAudience = false
-         };
-    });
+                .AddJwtBearer(opt =>
+                {
+                     opt.TokenValidationParameters = new TokenValidationParameters
+                     {
+                          ValidateIssuer = false,
+                          ValidateAudience = false,
+                          ValidateLifetime = true,
+                          ValidateIssuerSigningKey = true,
+                          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+                             .GetBytes(configuration["JWTSettings:TokenKey"]))
+                     };
+                });
+builder.Services.AddAuthorization();
+builder.Services.AddScoped<TokenService>();
 
 #endregion
 

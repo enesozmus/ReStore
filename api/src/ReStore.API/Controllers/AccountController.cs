@@ -3,14 +3,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using ReStore.API.Services;
 using ReStore.Application.DTOs;
 using ReStore.Application.Extensions;
 using ReStore.Domain.Entities;
 using ReStore.Infrastructure.Contexts;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 
 namespace ReStore.API.Controllers;
 
@@ -19,28 +16,19 @@ public class AccountController : BaseController
      private readonly ReStoreContext _context;
      private readonly UserManager<AppUser> _userManager;
      private readonly IUserService _userService;
+     private readonly TokenService _tokenService;
      private readonly IConfiguration _configuration;
      private readonly IMapper _mapper;
 
-     public AccountController(ReStoreContext context, UserManager<AppUser> userManager, IMapper mapper, IUserService userService, IConfiguration configuration)
+     public AccountController(ReStoreContext context, UserManager<AppUser> userManager, IMapper mapper, IUserService userService, IConfiguration configuration, TokenService tokenService)
      {
           _context = context;
           _userManager = userManager;
           _mapper = mapper;
           _userService = userService;
           _configuration = configuration;
+          _tokenService = tokenService;
      }
-
-     #region Test
-
-     [HttpGet, Authorize]
-     public ActionResult<string> GetMe()
-     {
-          var userName = _userService.GetMyName();
-          return Ok(userName);
-     }
-
-     #endregion
 
 
      #region Giriş Yap
@@ -73,12 +61,13 @@ public class AccountController : BaseController
                LastName = userModel.LastName,
                Email = userModel.Email,
                UserName = userModel.UserName,
-               Token = CreateToken(userModel),
+               Token = await _tokenService.GenerateToken(userModel),
                Basket = anonBasket != null ? anonBasket.MapBasketToDto() : userBasket?.MapBasketToDto()
           };
      }
 
      #endregion
+
 
      #region Kayıt Ol
 
@@ -121,11 +110,9 @@ public class AccountController : BaseController
      [HttpGet("currentUser")]
      public async Task<ActionResult<CurrentUserQueryResponse>> GetCurrentUser()
      {
-          // Direkt giriş yapmış kullanıcıyı getirir.
-          var user = _userManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+          var user = await _userManager.FindByNameAsync(User.Identity?.Name);
 
           var userBasket = await RetrieveBasket(user.UserName);
-
 
           var userModel = _mapper.Map<LoginCommandResponse>(user);
 
@@ -136,7 +123,7 @@ public class AccountController : BaseController
                LastName = userModel.LastName,
                UserName = userModel.UserName,
                Email = userModel.Email,
-               Token = CreateToken(userModel),
+               Token = await _tokenService.GenerateToken(userModel),
                Basket = userBasket?.MapBasketToDto()
           };
      }
@@ -159,33 +146,6 @@ public class AccountController : BaseController
               .ThenInclude(p => p.Product)
               .FirstOrDefaultAsync(x => x.BuyerId == buyerId);
           //.FirstOrDefaultAsync(x => x.BuyerId == Request.Cookies["buyerId"]) ?? new Basket();
-     }
-
-     #endregion
-
-     #region Token
-
-     private string CreateToken(LoginCommandResponse response)
-     {
-          List<Claim> claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, response.UserName),
-                new Claim(ClaimTypes.Role, "Admin")
-            };
-
-          var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
-              _configuration.GetSection("AppSettings:Token").Value));
-
-          var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-          var token = new JwtSecurityToken(
-              claims: claims,
-              expires: DateTime.Now.AddDays(1),
-              signingCredentials: creds);
-
-          var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-          return jwt;
      }
 
      #endregion
