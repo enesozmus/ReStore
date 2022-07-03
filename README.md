@@ -1,5 +1,5 @@
 # Re-Store
-> *  Bir **ASP.NET Core Web API** tüketen içerisinde ürün, sepet, sipariş ve ödeme fonksiyonlarının olduğu ilk **React** uygulamam
+> *  Bir **ASP.NET Core Web API** tüketen içerisinde `ürün`, `sepet`, `sipariş` ve `ödeme` fonksiyonlarının olduğu ilk **React** uygulamam
 > *  Tamamlanma Oranı: **%85**
 
 ## İzlence
