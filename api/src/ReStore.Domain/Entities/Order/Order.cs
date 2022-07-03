@@ -13,6 +13,9 @@ public class Order
      public long DeliveryFee { get; set; }
      public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
 
+     // for payment
+     public string PaymentIntentId { get; set; }
+
      public long GetTotal()
      {
           return Subtotal + DeliveryFee;

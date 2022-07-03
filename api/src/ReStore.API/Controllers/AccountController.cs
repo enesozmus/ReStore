@@ -99,6 +99,21 @@ public class AccountController : BaseController
      #endregion
 
 
+     #region Kayıtlı Adresi Getir
+
+     [Authorize]
+     [HttpGet("savedAddress")]
+     public async Task<ActionResult<UserAddress>> GetSavedAddress()
+     {
+          return await _userManager.Users
+              .Where(x => x.UserName == User.Identity.Name)
+              .Select(user => user.Address)
+              .FirstOrDefaultAsync();
+     }
+
+     #endregion
+
+
      #region Giriş Yapmış Mevcut Kullanıcıyı Getir
 
      //[Authorize(AuthenticationSchemes = "Bearer")]

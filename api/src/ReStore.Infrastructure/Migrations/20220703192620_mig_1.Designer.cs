@@ -12,7 +12,7 @@ using ReStore.Infrastructure.Contexts;
 namespace ReStore.Infrastructure.Migrations
 {
     [DbContext(typeof(ReStoreContext))]
-    [Migration("20220630111212_mig_1")]
+    [Migration("20220703192620_mig_1")]
     partial class mig_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,14 +212,14 @@ namespace ReStore.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "4f4e80c6-24ae-4b50-986b-7bd47785876a",
+                            ConcurrencyStamp = "f5628a5e-3651-4fd4-b90a-4613fc1c5f6e",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "7aafa019-a597-4804-bc3c-b087eba2b88d",
+                            ConcurrencyStamp = "9fa77e17-c03b-4eb7-a122-26981f591559",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -309,7 +309,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e1ad6a59-3baf-4258-b61c-cd33d9bdd742",
+                            ConcurrencyStamp = "e5a835e6-6bcb-4deb-ba8d-46dc16354e89",
                             Email = "enes@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Enes",
@@ -317,9 +317,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = " ENES@SEEDDATA.COM",
                             NormalizedUserName = "ENESOZMUS",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKoqldZVndldVEaOnNrtgdGueW7qUk59UhWRMDEPrJoPm2i37GNbFTFNsNkpEuL0fw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENtq7zML9U6dcsw89lZX2bqC9k3L9+Id7Wg1VqjCwa1tviKCWQHzZ339dhiFHIwN+w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7c9a38ad-0f0e-4164-a4c2-0a900f83ec63",
+                            SecurityStamp = "ee639a9a-4f96-40bd-89d1-ad632b820298",
                             TwoFactorEnabled = false,
                             UserName = "enesozmus"
                         },
@@ -327,7 +327,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "047b88b0-fb43-456a-a7fc-6cee8cd3e4cc",
+                            ConcurrencyStamp = "dd61549f-d62b-498a-852f-07ee4df8b02a",
                             Email = "umay@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Umay",
@@ -335,9 +335,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "UMAY@SEEDDATA.COM",
                             NormalizedUserName = "UMAYZENGIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBykqOiggYdzUxKnO9b9F9/SDJsY4j/CdIIOkgoYsOpEcTgyC9gvsfAbwbZNFUbHZQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKbPq7tPbi2h7plG72j/LMXVwbxnj9dNekFqIA7fkcWMza+7fjziLaAczE8blqrc+Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3f00d50c-7ddc-4b3c-ae7b-ec3fcc7aec74",
+                            SecurityStamp = "ba7e7636-2b9b-4af8-acc1-057d48281ee0",
                             TwoFactorEnabled = false,
                             UserName = "umayzengin"
                         },
@@ -345,7 +345,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "75134d63-3bf9-4ebe-af20-dc0180e9205d",
+                            ConcurrencyStamp = "f500afcb-66bb-444d-a059-a7db77d41bdb",
                             Email = "selim@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Selim",
@@ -353,9 +353,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SELIM@SEEDDATA.COM",
                             NormalizedUserName = "SELIMKARACA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMjohVLPZ4Uh7+J5Dmwrv8eQdt7fX8Z+QQKBQc13KibHMYhoy/tVUmtH/Jw1pQOP6Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIfSRrrGI8W5HeZ4DvWw6VkJV28j0ctn8Fd+434tslKUuqgxQZzAYsdAKzeWcKtByA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "94bb8cc3-88ac-4d9e-9d7e-555a9a6f0c7a",
+                            SecurityStamp = "c71546b7-4105-4237-8f28-412e22cc40a8",
                             TwoFactorEnabled = false,
                             UserName = "selimkaraca"
                         },
@@ -363,7 +363,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7ea42f89-9dd3-42ce-a6e3-6681a8f8d63f",
+                            ConcurrencyStamp = "5a01fc15-bc80-46e8-b4d4-4f69e6ae7b9c",
                             Email = "emine@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Emine",
@@ -371,9 +371,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EMINE@SEEDDATA.COM",
                             NormalizedUserName = "EMINEYILDIRIM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKIz7Bouea1oTM9XDZlt2+gfPtaRgaNYcmJ634PQ5mG+zZuehgRZxbIaR6SPPbbPHw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEECPezytJUTyNE+kLUDzgEfgxRoQ2C4MyRTiTWf01mEIDXJbTwzskVQSsJeysGwL5g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7e1b8c85-00f2-4aa3-a47a-6cc95531adb8",
+                            SecurityStamp = "07fab53f-3c95-45a4-8671-4af86111135f",
                             TwoFactorEnabled = false,
                             UserName = "emineyıldırım"
                         },
@@ -381,7 +381,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 5,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fffc277f-eefb-458e-b9c2-995744493266",
+                            ConcurrencyStamp = "8d275d10-15c4-4ac6-bd3c-f5fc87ca27a4",
                             Email = "ihsan@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "İhsan",
@@ -389,9 +389,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "IHSAN@SEEDDATA.COM",
                             NormalizedUserName = "IHSANYENILMEZ",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOirpxbCinrefSWybbmOyJ/H/6ipNFVjziVOKD66s0FXCRG8HCAwZ/EwwctAkz6oUA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAs/tf+/lRUHPfjJG1UYNDMBq2YSVC0MRHTxYkr5Ek/5Qce3PkVXe0FOVSdpOHQ9lQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ad30ddf8-def6-4ce3-82ba-152641159261",
+                            SecurityStamp = "921687c6-d618-44e9-8ddc-2e2ab0c31a66",
                             TwoFactorEnabled = false,
                             UserName = "ihsanyenilmez"
                         },
@@ -399,7 +399,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 6,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a76b6b2a-6320-42d7-bc3c-3f5149f7a9eb",
+                            ConcurrencyStamp = "efc0f3ba-9c09-474e-bc8f-ea106ee4a63e",
                             Email = "berrin@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Berrin",
@@ -407,9 +407,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BERRIN@SEEDDATA.COM",
                             NormalizedUserName = "BERRINMIRAL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGjZdnHL5gJcQtKPKhws2fNRmtpBgaGzHDfdo2sTPwtAHLVjoutFqLFAL5FQxrlqow==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH2QyjHygFPCwbRmNEcLgeWwVgVHNTUQg+AP9hZUMuBZiWdqd/XVBMQNxzkAAam8MA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "81edc328-2042-4742-bf4d-536930c6617e",
+                            SecurityStamp = "1158bf63-864e-45e2-a9fe-9b463bc83654",
                             TwoFactorEnabled = false,
                             UserName = "berrinmiral"
                         },
@@ -417,7 +417,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 7,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "da68f5c7-9ec0-40a5-a6d9-635238daf100",
+                            ConcurrencyStamp = "556468a7-50a6-4626-8cd8-6209b9fb708e",
                             Email = "salih@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Salih",
@@ -425,9 +425,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SALIH@SEEDDATA.COM",
                             NormalizedUserName = "SALIHYURDAKUL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBomoZ/rtlzRCo0Lth/BZ61pzlT7ZmqNMnRjdR+7ZTB1TAiEfEbtmfCQssy+S6rDAg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMidp5Tlm7Qh0bZVfOhHGJwnrkKWZCNZcv1PTddF5g9r/mjAyArMWiSEZ7luagwrKA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fa94f8ae-e27c-41d4-8c48-643ff82a13da",
+                            SecurityStamp = "03b7c0c0-317d-420b-8593-a5a6f7990a28",
                             TwoFactorEnabled = false,
                             UserName = "salihyurdakul"
                         },
@@ -435,7 +435,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 8,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e509a44e-caa6-4200-a9df-6294755e9878",
+                            ConcurrencyStamp = "fef0c245-8ba3-466c-a1a6-58e5e8e17e14",
                             Email = "zafer@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Zafer",
@@ -443,9 +443,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ZAFER@SEEDDATA.COM",
                             NormalizedUserName = "ZAFERKIRAT",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFBoatfa5oCWg3WIw5o99ddNBlKWp+gFKRyAiMEMJbmZKrAaADRG7e7w+ZRN/BzunA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELUhxmXR4sjD8ylxrolfROdwakY3cHkX+5wVbQkeSTLUo6UYle3PUJD7QVtejmKr9A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8b3c40e8-a3bd-476c-9f91-a20b562ab826",
+                            SecurityStamp = "59a17895-56ba-443b-829a-18754bc0133b",
                             TwoFactorEnabled = false,
                             UserName = "zaferkırat"
                         },
@@ -453,7 +453,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 9,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8f0803e1-858c-4583-b0fe-0ebb22f6a9b0",
+                            ConcurrencyStamp = "eaf2fe68-966a-4f98-b0bb-af9fdb1a02d9",
                             Email = "emre@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Emre",
@@ -461,9 +461,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EMRE@SEEDDATA.COM",
                             NormalizedUserName = "EMREDEMIR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGAWtOWRAAx24G9ilLSjHKYXpEuooPQVoh7YDGm2O+AKigNxv1ONgsITx4IqDPIbuw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIAQ4W/Fsuh/oMyRBdMgnik3XVTY0pVRrUt7QFHf9rtTRbeS/RbYhui6VkfLA1pNKg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6e7e94bf-6aff-4255-bc1c-1ada4fdae212",
+                            SecurityStamp = "aeef78e8-bc13-40fd-bc65-d83327e18988",
                             TwoFactorEnabled = false,
                             UserName = "emredemir"
                         },
@@ -471,7 +471,7 @@ namespace ReStore.Infrastructure.Migrations
                         {
                             Id = 10,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f74dada4-4f48-42a5-85d4-c7abf173b159",
+                            ConcurrencyStamp = "45976e9c-6632-4c5c-9234-c42f0923eb06",
                             Email = "hakan@seeddata.com",
                             EmailConfirmed = true,
                             FirstName = "Hakan",
@@ -479,9 +479,9 @@ namespace ReStore.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "HAKAN@SEEDDATA.COM",
                             NormalizedUserName = "HAKANFILIZ",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOExp6rCdd5UMTgBYy2jUIJh9TvboR9t8uWQ9eIxgTl9EMxb4ljrHs6kU7KkOvNVDw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEILOccgxB782bE3HKx15bblxczmkZnFDTtApCiJlTHm3h+YuS9+HnrUZEoiPIR9l4w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "443b0afd-dccb-4c36-b49c-56423a030ba4",
+                            SecurityStamp = "2451ab90-788d-492e-9ab5-508c84d02de0",
                             TwoFactorEnabled = false,
                             UserName = "hakanfiliz"
                         });
@@ -499,11 +499,17 @@ namespace ReStore.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ClientSecret")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentIntentId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -610,6 +616,10 @@ namespace ReStore.Infrastructure.Migrations
 
                     b.Property<int>("OrderStatus")
                         .HasColumnType("int");
+
+                    b.Property<string>("PaymentIntentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("Subtotal")
                         .HasColumnType("bigint");

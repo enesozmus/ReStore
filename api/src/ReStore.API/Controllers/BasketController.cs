@@ -114,7 +114,7 @@ namespace ReStore.API.Controllers
 
                var basket = new Basket { BuyerId = buyerId };
                _context.Baskets.Add(basket);
-               _context.SaveChanges();
+               
                return basket;
           }
 

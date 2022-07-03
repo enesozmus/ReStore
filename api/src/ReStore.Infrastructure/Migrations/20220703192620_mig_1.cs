@@ -59,6 +59,8 @@ namespace ReStore.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BuyerId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaymentIntentId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClientSecret = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -114,7 +116,8 @@ namespace ReStore.Infrastructure.Migrations
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Subtotal = table.Column<long>(type: "bigint", nullable: false),
                     DeliveryFee = table.Column<long>(type: "bigint", nullable: false),
-                    OrderStatus = table.Column<int>(type: "int", nullable: false)
+                    OrderStatus = table.Column<int>(type: "int", nullable: false),
+                    PaymentIntentId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -342,8 +345,8 @@ namespace ReStore.Infrastructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "4f4e80c6-24ae-4b50-986b-7bd47785876a", "Member", "MEMBER" },
-                    { 2, "7aafa019-a597-4804-bc3c-b087eba2b88d", "Admin", "ADMIN" }
+                    { 1, "f5628a5e-3651-4fd4-b90a-4613fc1c5f6e", "Member", "MEMBER" },
+                    { 2, "9fa77e17-c03b-4eb7-a122-26981f591559", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -351,16 +354,16 @@ namespace ReStore.Infrastructure.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, 0, "e1ad6a59-3baf-4258-b61c-cd33d9bdd742", "enes@seeddata.com", true, "Enes", "Ozmus", false, null, " ENES@SEEDDATA.COM", "ENESOZMUS", "AQAAAAEAACcQAAAAEKoqldZVndldVEaOnNrtgdGueW7qUk59UhWRMDEPrJoPm2i37GNbFTFNsNkpEuL0fw==", null, false, "7c9a38ad-0f0e-4164-a4c2-0a900f83ec63", false, "enesozmus" },
-                    { 2, 0, "047b88b0-fb43-456a-a7fc-6cee8cd3e4cc", "umay@seeddata.com", true, "Umay", "Zengin", false, null, "UMAY@SEEDDATA.COM", "UMAYZENGIN", "AQAAAAEAACcQAAAAEBykqOiggYdzUxKnO9b9F9/SDJsY4j/CdIIOkgoYsOpEcTgyC9gvsfAbwbZNFUbHZQ==", null, false, "3f00d50c-7ddc-4b3c-ae7b-ec3fcc7aec74", false, "umayzengin" },
-                    { 3, 0, "75134d63-3bf9-4ebe-af20-dc0180e9205d", "selim@seeddata.com", true, "Selim", "Karaca", false, null, "SELIM@SEEDDATA.COM", "SELIMKARACA", "AQAAAAEAACcQAAAAEMjohVLPZ4Uh7+J5Dmwrv8eQdt7fX8Z+QQKBQc13KibHMYhoy/tVUmtH/Jw1pQOP6Q==", null, false, "94bb8cc3-88ac-4d9e-9d7e-555a9a6f0c7a", false, "selimkaraca" },
-                    { 4, 0, "7ea42f89-9dd3-42ce-a6e3-6681a8f8d63f", "emine@seeddata.com", true, "Emine", "Yıldırım", false, null, "EMINE@SEEDDATA.COM", "EMINEYILDIRIM", "AQAAAAEAACcQAAAAEKIz7Bouea1oTM9XDZlt2+gfPtaRgaNYcmJ634PQ5mG+zZuehgRZxbIaR6SPPbbPHw==", null, false, "7e1b8c85-00f2-4aa3-a47a-6cc95531adb8", false, "emineyıldırım" },
-                    { 5, 0, "fffc277f-eefb-458e-b9c2-995744493266", "ihsan@seeddata.com", true, "İhsan", "Yenilmez", false, null, "IHSAN@SEEDDATA.COM", "IHSANYENILMEZ", "AQAAAAEAACcQAAAAEOirpxbCinrefSWybbmOyJ/H/6ipNFVjziVOKD66s0FXCRG8HCAwZ/EwwctAkz6oUA==", null, false, "ad30ddf8-def6-4ce3-82ba-152641159261", false, "ihsanyenilmez" },
-                    { 6, 0, "a76b6b2a-6320-42d7-bc3c-3f5149f7a9eb", "berrin@seeddata.com", true, "Berrin", "Miral", false, null, "BERRIN@SEEDDATA.COM", "BERRINMIRAL", "AQAAAAEAACcQAAAAEGjZdnHL5gJcQtKPKhws2fNRmtpBgaGzHDfdo2sTPwtAHLVjoutFqLFAL5FQxrlqow==", null, false, "81edc328-2042-4742-bf4d-536930c6617e", false, "berrinmiral" },
-                    { 7, 0, "da68f5c7-9ec0-40a5-a6d9-635238daf100", "salih@seeddata.com", true, "Salih", "Yurdakul", false, null, "SALIH@SEEDDATA.COM", "SALIHYURDAKUL", "AQAAAAEAACcQAAAAEBomoZ/rtlzRCo0Lth/BZ61pzlT7ZmqNMnRjdR+7ZTB1TAiEfEbtmfCQssy+S6rDAg==", null, false, "fa94f8ae-e27c-41d4-8c48-643ff82a13da", false, "salihyurdakul" },
-                    { 8, 0, "e509a44e-caa6-4200-a9df-6294755e9878", "zafer@seeddata.com", true, "Zafer", "Kırat", false, null, "ZAFER@SEEDDATA.COM", "ZAFERKIRAT", "AQAAAAEAACcQAAAAEFBoatfa5oCWg3WIw5o99ddNBlKWp+gFKRyAiMEMJbmZKrAaADRG7e7w+ZRN/BzunA==", null, false, "8b3c40e8-a3bd-476c-9f91-a20b562ab826", false, "zaferkırat" },
-                    { 9, 0, "8f0803e1-858c-4583-b0fe-0ebb22f6a9b0", "emre@seeddata.com", true, "Emre", "Demir", false, null, "EMRE@SEEDDATA.COM", "EMREDEMIR", "AQAAAAEAACcQAAAAEGAWtOWRAAx24G9ilLSjHKYXpEuooPQVoh7YDGm2O+AKigNxv1ONgsITx4IqDPIbuw==", null, false, "6e7e94bf-6aff-4255-bc1c-1ada4fdae212", false, "emredemir" },
-                    { 10, 0, "f74dada4-4f48-42a5-85d4-c7abf173b159", "hakan@seeddata.com", true, "Hakan", "Filiz", false, null, "HAKAN@SEEDDATA.COM", "HAKANFILIZ", "AQAAAAEAACcQAAAAEOExp6rCdd5UMTgBYy2jUIJh9TvboR9t8uWQ9eIxgTl9EMxb4ljrHs6kU7KkOvNVDw==", null, false, "443b0afd-dccb-4c36-b49c-56423a030ba4", false, "hakanfiliz" }
+                    { 1, 0, "e5a835e6-6bcb-4deb-ba8d-46dc16354e89", "enes@seeddata.com", true, "Enes", "Ozmus", false, null, " ENES@SEEDDATA.COM", "ENESOZMUS", "AQAAAAEAACcQAAAAENtq7zML9U6dcsw89lZX2bqC9k3L9+Id7Wg1VqjCwa1tviKCWQHzZ339dhiFHIwN+w==", null, false, "ee639a9a-4f96-40bd-89d1-ad632b820298", false, "enesozmus" },
+                    { 2, 0, "dd61549f-d62b-498a-852f-07ee4df8b02a", "umay@seeddata.com", true, "Umay", "Zengin", false, null, "UMAY@SEEDDATA.COM", "UMAYZENGIN", "AQAAAAEAACcQAAAAEKbPq7tPbi2h7plG72j/LMXVwbxnj9dNekFqIA7fkcWMza+7fjziLaAczE8blqrc+Q==", null, false, "ba7e7636-2b9b-4af8-acc1-057d48281ee0", false, "umayzengin" },
+                    { 3, 0, "f500afcb-66bb-444d-a059-a7db77d41bdb", "selim@seeddata.com", true, "Selim", "Karaca", false, null, "SELIM@SEEDDATA.COM", "SELIMKARACA", "AQAAAAEAACcQAAAAEIfSRrrGI8W5HeZ4DvWw6VkJV28j0ctn8Fd+434tslKUuqgxQZzAYsdAKzeWcKtByA==", null, false, "c71546b7-4105-4237-8f28-412e22cc40a8", false, "selimkaraca" },
+                    { 4, 0, "5a01fc15-bc80-46e8-b4d4-4f69e6ae7b9c", "emine@seeddata.com", true, "Emine", "Yıldırım", false, null, "EMINE@SEEDDATA.COM", "EMINEYILDIRIM", "AQAAAAEAACcQAAAAEECPezytJUTyNE+kLUDzgEfgxRoQ2C4MyRTiTWf01mEIDXJbTwzskVQSsJeysGwL5g==", null, false, "07fab53f-3c95-45a4-8671-4af86111135f", false, "emineyıldırım" },
+                    { 5, 0, "8d275d10-15c4-4ac6-bd3c-f5fc87ca27a4", "ihsan@seeddata.com", true, "İhsan", "Yenilmez", false, null, "IHSAN@SEEDDATA.COM", "IHSANYENILMEZ", "AQAAAAEAACcQAAAAEAs/tf+/lRUHPfjJG1UYNDMBq2YSVC0MRHTxYkr5Ek/5Qce3PkVXe0FOVSdpOHQ9lQ==", null, false, "921687c6-d618-44e9-8ddc-2e2ab0c31a66", false, "ihsanyenilmez" },
+                    { 6, 0, "efc0f3ba-9c09-474e-bc8f-ea106ee4a63e", "berrin@seeddata.com", true, "Berrin", "Miral", false, null, "BERRIN@SEEDDATA.COM", "BERRINMIRAL", "AQAAAAEAACcQAAAAEH2QyjHygFPCwbRmNEcLgeWwVgVHNTUQg+AP9hZUMuBZiWdqd/XVBMQNxzkAAam8MA==", null, false, "1158bf63-864e-45e2-a9fe-9b463bc83654", false, "berrinmiral" },
+                    { 7, 0, "556468a7-50a6-4626-8cd8-6209b9fb708e", "salih@seeddata.com", true, "Salih", "Yurdakul", false, null, "SALIH@SEEDDATA.COM", "SALIHYURDAKUL", "AQAAAAEAACcQAAAAEMidp5Tlm7Qh0bZVfOhHGJwnrkKWZCNZcv1PTddF5g9r/mjAyArMWiSEZ7luagwrKA==", null, false, "03b7c0c0-317d-420b-8593-a5a6f7990a28", false, "salihyurdakul" },
+                    { 8, 0, "fef0c245-8ba3-466c-a1a6-58e5e8e17e14", "zafer@seeddata.com", true, "Zafer", "Kırat", false, null, "ZAFER@SEEDDATA.COM", "ZAFERKIRAT", "AQAAAAEAACcQAAAAELUhxmXR4sjD8ylxrolfROdwakY3cHkX+5wVbQkeSTLUo6UYle3PUJD7QVtejmKr9A==", null, false, "59a17895-56ba-443b-829a-18754bc0133b", false, "zaferkırat" },
+                    { 9, 0, "eaf2fe68-966a-4f98-b0bb-af9fdb1a02d9", "emre@seeddata.com", true, "Emre", "Demir", false, null, "EMRE@SEEDDATA.COM", "EMREDEMIR", "AQAAAAEAACcQAAAAEIAQ4W/Fsuh/oMyRBdMgnik3XVTY0pVRrUt7QFHf9rtTRbeS/RbYhui6VkfLA1pNKg==", null, false, "aeef78e8-bc13-40fd-bc65-d83327e18988", false, "emredemir" },
+                    { 10, 0, "45976e9c-6632-4c5c-9234-c42f0923eb06", "hakan@seeddata.com", true, "Hakan", "Filiz", false, null, "HAKAN@SEEDDATA.COM", "HAKANFILIZ", "AQAAAAEAACcQAAAAEILOccgxB782bE3HKx15bblxczmkZnFDTtApCiJlTHm3h+YuS9+HnrUZEoiPIR9l4w==", null, false, "2451ab90-788d-492e-9ab5-508c84d02de0", false, "hakanfiliz" }
                 });
 
             migrationBuilder.InsertData(

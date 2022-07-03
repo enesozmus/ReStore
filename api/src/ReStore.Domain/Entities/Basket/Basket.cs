@@ -5,6 +5,10 @@ public class Basket : BaseEntity
      public string BuyerId { get; set; }
      public List<BasketItem> Items { get; set; } = new();
 
+     // for payment
+     public string? PaymentIntentId { get; set; }
+     public string? ClientSecret { get; set; }
+
      #region MyRegion
 
      public void AddItem(Product product, int quantity)

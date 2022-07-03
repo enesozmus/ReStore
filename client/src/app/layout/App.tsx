@@ -8,16 +8,15 @@ import { fetchCurrentUser } from "../../features/account/accountSlice";
 import Login from "../../features/account/Login";
 import Register from "../../features/account/Register";
 import BasketPage from "../../features/basket/BasketPage";
-import { fetchBasketAsync, setBasket } from "../../features/basket/basketSlice";
+import { fetchBasketAsync } from "../../features/basket/basketSlice";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
-import CheckoutPage from "../../features/checkout/CheckoutPage";
+import CheckoutWrapper from "../../features/checkout/CheckoutWrapper";
 import ContactPage from "../../features/contact/ContactPage";
 import HomePage from "../../features/home/HomePage";
-import agent from "../api/agent";
+import Orders from "../../features/orders/Orders";
 import NotFound from "../errors/NotFound";
 import { useAppDispatch } from "../store/configureStore";
-import { getCookie } from "../util/util";
 import Header from "./Header";
 import LoadingComponent from "./LoadingComponent";
 import { PrivateRoute } from "./PrivateRoute";
@@ -86,8 +85,12 @@ function App() {
           <Route path='/basket' element={<BasketPage />} />
           <Route
             path='/checkout'
-            element={<PrivateRoute><CheckoutPage /></PrivateRoute>}
-            />
+            element={<PrivateRoute><CheckoutWrapper /></PrivateRoute>}
+          />
+          <Route
+            path='/orders'
+            element={<PrivateRoute><Orders /></PrivateRoute>}
+          />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='*' element={<NotFound />} />
