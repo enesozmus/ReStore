@@ -12,11 +12,31 @@ public class ReStoreContext : IdentityDbContext<AppUser, AppRole, int>
 
      #region Entities
 
-     public DbSet<Category> Categories { get; set; }
      public DbSet<Product> Products { get; set; }
      public DbSet<Basket> Baskets { get; set; }
      public DbSet<Order> Orders { get; set; }
-     public DbSet<Color> Colors { get; set; }
+
+     #endregion
+
+     #region SaveChangesAsync
+
+     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+     {
+          foreach (var entry in ChangeTracker.Entries<BaseEntity>())
+          {
+               switch (entry.State)
+               {
+                    case EntityState.Added:
+                         entry.Entity.CreatedDate = DateTime.Now;
+
+                         break;
+                    case EntityState.Modified:
+                         entry.Entity.LastModifiedDate = DateTime.Now;
+                         break;
+               }
+          }
+          return base.SaveChangesAsync(cancellationToken);
+     }
 
      #endregion
 
@@ -24,9 +44,9 @@ public class ReStoreContext : IdentityDbContext<AppUser, AppRole, int>
 
      protected override void OnModelCreating(ModelBuilder modelBuilder)
      {
-          modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+          //modelBuilder.ApplyConfiguration(new CategoryConfiguration());
           modelBuilder.ApplyConfiguration(new ProductConfiguration());
-          modelBuilder.ApplyConfiguration(new ColorConfiguration());
+          //modelBuilder.ApplyConfiguration(new ColorConfiguration());
           modelBuilder.ApplyConfiguration(new AppUserConfiguration());
           modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
 

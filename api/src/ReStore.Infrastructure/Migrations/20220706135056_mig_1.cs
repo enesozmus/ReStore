@@ -70,36 +70,6 @@ namespace ReStore.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Colors",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Colors", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -122,6 +92,29 @@ namespace ReStore.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Price = table.Column<long>(type: "bigint", nullable: false),
+                    PictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QuantityInStock = table.Column<int>(type: "int", nullable: false),
+                    PublicId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -255,40 +248,6 @@ namespace ReStore.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Price = table.Column<long>(type: "bigint", nullable: false),
-                    PictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    QuantityInStock = table.Column<int>(type: "int", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    ColorId = table.Column<int>(type: "int", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Products_Colors_ColorId",
-                        column: x => x.ColorId,
-                        principalTable: "Colors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "OrderItem",
                 columns: table => new
                 {
@@ -345,8 +304,8 @@ namespace ReStore.Infrastructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "f5628a5e-3651-4fd4-b90a-4613fc1c5f6e", "Member", "MEMBER" },
-                    { 2, "9fa77e17-c03b-4eb7-a122-26981f591559", "Admin", "ADMIN" }
+                    { 1, "2b913b7c-ceae-477e-9182-15d159c68e53", "Member", "MEMBER" },
+                    { 2, "c2299c56-837f-44df-bab0-1bdd61df8299", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -354,16 +313,16 @@ namespace ReStore.Infrastructure.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, 0, "e5a835e6-6bcb-4deb-ba8d-46dc16354e89", "enes@seeddata.com", true, "Enes", "Ozmus", false, null, " ENES@SEEDDATA.COM", "ENESOZMUS", "AQAAAAEAACcQAAAAENtq7zML9U6dcsw89lZX2bqC9k3L9+Id7Wg1VqjCwa1tviKCWQHzZ339dhiFHIwN+w==", null, false, "ee639a9a-4f96-40bd-89d1-ad632b820298", false, "enesozmus" },
-                    { 2, 0, "dd61549f-d62b-498a-852f-07ee4df8b02a", "umay@seeddata.com", true, "Umay", "Zengin", false, null, "UMAY@SEEDDATA.COM", "UMAYZENGIN", "AQAAAAEAACcQAAAAEKbPq7tPbi2h7plG72j/LMXVwbxnj9dNekFqIA7fkcWMza+7fjziLaAczE8blqrc+Q==", null, false, "ba7e7636-2b9b-4af8-acc1-057d48281ee0", false, "umayzengin" },
-                    { 3, 0, "f500afcb-66bb-444d-a059-a7db77d41bdb", "selim@seeddata.com", true, "Selim", "Karaca", false, null, "SELIM@SEEDDATA.COM", "SELIMKARACA", "AQAAAAEAACcQAAAAEIfSRrrGI8W5HeZ4DvWw6VkJV28j0ctn8Fd+434tslKUuqgxQZzAYsdAKzeWcKtByA==", null, false, "c71546b7-4105-4237-8f28-412e22cc40a8", false, "selimkaraca" },
-                    { 4, 0, "5a01fc15-bc80-46e8-b4d4-4f69e6ae7b9c", "emine@seeddata.com", true, "Emine", "Yıldırım", false, null, "EMINE@SEEDDATA.COM", "EMINEYILDIRIM", "AQAAAAEAACcQAAAAEECPezytJUTyNE+kLUDzgEfgxRoQ2C4MyRTiTWf01mEIDXJbTwzskVQSsJeysGwL5g==", null, false, "07fab53f-3c95-45a4-8671-4af86111135f", false, "emineyıldırım" },
-                    { 5, 0, "8d275d10-15c4-4ac6-bd3c-f5fc87ca27a4", "ihsan@seeddata.com", true, "İhsan", "Yenilmez", false, null, "IHSAN@SEEDDATA.COM", "IHSANYENILMEZ", "AQAAAAEAACcQAAAAEAs/tf+/lRUHPfjJG1UYNDMBq2YSVC0MRHTxYkr5Ek/5Qce3PkVXe0FOVSdpOHQ9lQ==", null, false, "921687c6-d618-44e9-8ddc-2e2ab0c31a66", false, "ihsanyenilmez" },
-                    { 6, 0, "efc0f3ba-9c09-474e-bc8f-ea106ee4a63e", "berrin@seeddata.com", true, "Berrin", "Miral", false, null, "BERRIN@SEEDDATA.COM", "BERRINMIRAL", "AQAAAAEAACcQAAAAEH2QyjHygFPCwbRmNEcLgeWwVgVHNTUQg+AP9hZUMuBZiWdqd/XVBMQNxzkAAam8MA==", null, false, "1158bf63-864e-45e2-a9fe-9b463bc83654", false, "berrinmiral" },
-                    { 7, 0, "556468a7-50a6-4626-8cd8-6209b9fb708e", "salih@seeddata.com", true, "Salih", "Yurdakul", false, null, "SALIH@SEEDDATA.COM", "SALIHYURDAKUL", "AQAAAAEAACcQAAAAEMidp5Tlm7Qh0bZVfOhHGJwnrkKWZCNZcv1PTddF5g9r/mjAyArMWiSEZ7luagwrKA==", null, false, "03b7c0c0-317d-420b-8593-a5a6f7990a28", false, "salihyurdakul" },
-                    { 8, 0, "fef0c245-8ba3-466c-a1a6-58e5e8e17e14", "zafer@seeddata.com", true, "Zafer", "Kırat", false, null, "ZAFER@SEEDDATA.COM", "ZAFERKIRAT", "AQAAAAEAACcQAAAAELUhxmXR4sjD8ylxrolfROdwakY3cHkX+5wVbQkeSTLUo6UYle3PUJD7QVtejmKr9A==", null, false, "59a17895-56ba-443b-829a-18754bc0133b", false, "zaferkırat" },
-                    { 9, 0, "eaf2fe68-966a-4f98-b0bb-af9fdb1a02d9", "emre@seeddata.com", true, "Emre", "Demir", false, null, "EMRE@SEEDDATA.COM", "EMREDEMIR", "AQAAAAEAACcQAAAAEIAQ4W/Fsuh/oMyRBdMgnik3XVTY0pVRrUt7QFHf9rtTRbeS/RbYhui6VkfLA1pNKg==", null, false, "aeef78e8-bc13-40fd-bc65-d83327e18988", false, "emredemir" },
-                    { 10, 0, "45976e9c-6632-4c5c-9234-c42f0923eb06", "hakan@seeddata.com", true, "Hakan", "Filiz", false, null, "HAKAN@SEEDDATA.COM", "HAKANFILIZ", "AQAAAAEAACcQAAAAEILOccgxB782bE3HKx15bblxczmkZnFDTtApCiJlTHm3h+YuS9+HnrUZEoiPIR9l4w==", null, false, "2451ab90-788d-492e-9ab5-508c84d02de0", false, "hakanfiliz" }
+                    { 1, 0, "b7ea2446-ae0c-4437-b4fb-aa7dd02b17d0", "enes@seeddata.com", true, "Enes", "Ozmus", false, null, " ENES@SEEDDATA.COM", "ENESOZMUS", "AQAAAAEAACcQAAAAEIoCBIndf+Pt8JKr29jgNmS36++ZXxV1GusrYej1jImDp4U0eBhE3h4mkEX2MiJa0w==", null, false, "37d358e8-f7f4-4a1b-9182-00a91e446ec7", false, "enesozmus" },
+                    { 2, 0, "80ace4b8-5cac-4342-b07a-f5a25014ec45", "umay@seeddata.com", true, "Umay", "Zengin", false, null, "UMAY@SEEDDATA.COM", "UMAYZENGIN", "AQAAAAEAACcQAAAAEEcPrfnTnGxqkTaLvLoegzz3NBeunhbWL5Lu67yAWVKg9OxCuvJscH8ohiPb5LeW8w==", null, false, "6215d312-2f84-4f74-89c1-95125adfa2aa", false, "umayzengin" },
+                    { 3, 0, "9b7b3e09-3483-4d24-b35f-aaf185395f55", "selim@seeddata.com", true, "Selim", "Karaca", false, null, "SELIM@SEEDDATA.COM", "SELIMKARACA", "AQAAAAEAACcQAAAAEP7jkDWoQSaLwVvVgTIKR+m5gmEOZR+z6KrtvC1+lp2vpOy16JMcw4y9r+TSKpkfqw==", null, false, "2ce3978e-1af0-44d1-b26d-51694b322ffc", false, "selimkaraca" },
+                    { 4, 0, "6bf51f62-3c63-47cd-9bf7-832ce9ab5b63", "emine@seeddata.com", true, "Emine", "Yıldırım", false, null, "EMINE@SEEDDATA.COM", "EMINEYILDIRIM", "AQAAAAEAACcQAAAAEKkyV8XRcRrZE1qa9j5wHIh9qhuf1iADaJbSJaCDcFppnSVTK163VC0KIvOQgVviQA==", null, false, "1e5a7b7f-cc95-4888-ad11-1b2d0b4068fa", false, "emineyıldırım" },
+                    { 5, 0, "0dd9e2fe-6e26-4c48-b2f6-6c948088bd83", "ihsan@seeddata.com", true, "İhsan", "Yenilmez", false, null, "IHSAN@SEEDDATA.COM", "IHSANYENILMEZ", "AQAAAAEAACcQAAAAEFNenjngylrWxPaX9qr7hgrZg8mOvhSisf5uji9Z3bL9Dw8nHNUF9tLDkC8BChxe1w==", null, false, "4b5f33f4-16a7-4651-94d9-1aeaa7b9f22a", false, "ihsanyenilmez" },
+                    { 6, 0, "349e833c-ca52-439b-a845-d632cd0821b8", "berrin@seeddata.com", true, "Berrin", "Miral", false, null, "BERRIN@SEEDDATA.COM", "BERRINMIRAL", "AQAAAAEAACcQAAAAEJ2kRdQS+CBlgxMp+Lt3IJC61N+N774UZoQ8yFXsNLEdOa7P4fn0AyW5dD67DuzNvQ==", null, false, "f63c1a66-2d02-4914-a7f0-985b4372b189", false, "berrinmiral" },
+                    { 7, 0, "ffacd4e0-7d17-4ec7-9aba-20371b2e8b0c", "salih@seeddata.com", true, "Salih", "Yurdakul", false, null, "SALIH@SEEDDATA.COM", "SALIHYURDAKUL", "AQAAAAEAACcQAAAAEAvvUFBE3cS2ku4vk/F+1JIZe//YpfWCS5BRb1mx5tqmGNxW1ASmFmGXJuWMKTPTqQ==", null, false, "95c96e38-4010-4a27-b3e7-54f970177657", false, "salihyurdakul" },
+                    { 8, 0, "a0e3b176-a8ef-48ad-9809-55ea1f840ea4", "zafer@seeddata.com", true, "Zafer", "Kırat", false, null, "ZAFER@SEEDDATA.COM", "ZAFERKIRAT", "AQAAAAEAACcQAAAAEGlIo8LUDYp85APOrUC1BlGFfq+GTGdsSK0nARnNx4g1uHnKB+yOw3+725JklsBWfw==", null, false, "39457c82-cc75-40a7-8c02-2d899411e44d", false, "zaferkırat" },
+                    { 9, 0, "b716f896-64e6-4b65-a3f5-2265ebe25528", "emre@seeddata.com", true, "Emre", "Demir", false, null, "EMRE@SEEDDATA.COM", "EMREDEMIR", "AQAAAAEAACcQAAAAENrq4m5yPoeOq+iNGiDjOEIz1g9gG9n1P81Q1jPyDNRKkacD7I8p6Elmk2aF0iRjAg==", null, false, "e9de7aaf-3493-4536-af30-a216253fa533", false, "emredemir" },
+                    { 10, 0, "cdbb6d1a-6bf1-4211-9803-22ea40460df7", "hakan@seeddata.com", true, "Hakan", "Filiz", false, null, "HAKAN@SEEDDATA.COM", "HAKANFILIZ", "AQAAAAEAACcQAAAAEO8e++a179e8Wv4LdGnqoWBdOOCVQ5wtdZwXRljjFDiMexuLT2f9gmBWjl7TvhMcYg==", null, false, "811c7f9c-1ab4-436d-a440-673f553d6f60", false, "hakanfiliz" }
                 });
 
             migrationBuilder.InsertData(
@@ -436,16 +395,6 @@ namespace ReStore.Infrastructure.Migrations
                 name: "IX_OrderItem_OrderId",
                 table: "OrderItem",
                 column: "OrderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
-                table: "Products",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_ColorId",
-                table: "Products",
-                column: "ColorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -488,12 +437,6 @@ namespace ReStore.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Colors");
         }
     }
 }

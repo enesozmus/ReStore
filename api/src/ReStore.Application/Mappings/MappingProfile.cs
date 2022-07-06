@@ -6,14 +6,21 @@ namespace ReStore.Application.Mappings;
 
 public class MappingProfile : Profile
 {
-      public MappingProfile()
-      {
-            #region Users
+     public MappingProfile()
+     {
+          #region Users
 
-            CreateMap<AppUser, LoginCommandResponse>().ReverseMap();
-            CreateMap<AppUser, CurrentUserQueryResponse>().ReverseMap();
+          CreateMap<AppUser, LoginCommandResponse>().ReverseMap();
+          CreateMap<AppUser, CurrentUserQueryResponse>().ReverseMap();
 
-            #endregion
-      }
+          #endregion
+
+          #region Product
+
+          CreateMap<CreateProductDto, Product>();
+          CreateMap<UpdateProductDto, Product>();
+
+          #endregion
+     }
 }
 

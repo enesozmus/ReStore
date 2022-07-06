@@ -40,9 +40,9 @@ const navStyles = {
 export default function Header({ darkMode, handleThemeChange }: Props) {
 
 
-    const {basket} = useAppSelector(state => state.basket);
+    const { basket } = useAppSelector(state => state.basket);
     const { user } = useAppSelector(state => state.account);
-    
+
     const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0)
 
     return (
@@ -62,16 +62,25 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                     <Switch checked={darkMode} onChange={handleThemeChange} />
                 </Box>
 
-                <List sx={{ display: 'flex' }}> {midLinks.map(({ title, path }) => (
+                <List sx={{ display: 'flex' }}>
+                    {midLinks.map(({ title, path }) => (
+                        <ListItem
+                            component={NavLink}
+                            to={path}
+                            key={path}
+                            sx={navStyles}
+                        >
+                            {title.toUpperCase()}
+                        </ListItem>
+                    ))}
+                    {user && user.roles?.includes('Admin') &&
                     <ListItem
                         component={NavLink}
-                        to={path}
-                        key={path}
+                        to={'/inventory'}
                         sx={navStyles}
                     >
-                        {title.toUpperCase()}
-                    </ListItem>
-                ))}
+                        INVENTORY
+                    </ListItem>}    
                 </List>
 
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -100,7 +109,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                             ))}
                         </List>
                     )}
-                    
+
                 </Box>
 
             </Toolbar>

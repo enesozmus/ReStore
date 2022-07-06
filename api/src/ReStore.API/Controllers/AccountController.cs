@@ -15,18 +15,14 @@ public class AccountController : BaseController
 {
      private readonly ReStoreContext _context;
      private readonly UserManager<AppUser> _userManager;
-     private readonly IUserService _userService;
      private readonly TokenService _tokenService;
-     private readonly IConfiguration _configuration;
      private readonly IMapper _mapper;
 
-     public AccountController(ReStoreContext context, UserManager<AppUser> userManager, IMapper mapper, IUserService userService, IConfiguration configuration, TokenService tokenService)
+     public AccountController(ReStoreContext context, UserManager<AppUser> userManager, IMapper mapper, TokenService tokenService)
      {
           _context = context;
           _userManager = userManager;
           _mapper = mapper;
-          _userService = userService;
-          _configuration = configuration;
           _tokenService = tokenService;
      }
 
@@ -52,16 +48,15 @@ public class AccountController : BaseController
                Response.Cookies.Delete("buyerId");
                await _context.SaveChangesAsync();
           }
-          var userModel = _mapper.Map<LoginCommandResponse>(user);
 
           return new LoginCommandResponse
           {
-               Id = userModel.Id,
-               FirstName = userModel.FirstName,
-               LastName = userModel.LastName,
-               Email = userModel.Email,
-               UserName = userModel.UserName,
-               Token = await _tokenService.GenerateToken(userModel),
+               Id = user.Id,
+               FirstName = user.FirstName,
+               LastName = user.LastName,
+               Email = user.Email,
+               UserName = user.UserName,
+               Token = await _tokenService.GenerateToken(user),
                Basket = anonBasket != null ? anonBasket.MapBasketToDto() : userBasket?.MapBasketToDto()
           };
      }
@@ -129,22 +124,21 @@ public class AccountController : BaseController
 
           var userBasket = await RetrieveBasket(user.UserName);
 
-          var userModel = _mapper.Map<LoginCommandResponse>(user);
-
           return new CurrentUserQueryResponse
           {
-               Id = userModel.Id,
-               FirstName = userModel.FirstName,
-               LastName = userModel.LastName,
-               UserName = userModel.UserName,
-               Email = userModel.Email,
-               Token = await _tokenService.GenerateToken(userModel),
+               Id = user.Id,
+               FirstName = user.FirstName,
+               LastName = user.LastName,
+               UserName = user.UserName,
+               Email = user.Email,
+               Token = await _tokenService.GenerateToken(user),
                Basket = userBasket?.MapBasketToDto()
           };
      }
 
 
      #endregion
+
 
      #region Retrive Basket
 

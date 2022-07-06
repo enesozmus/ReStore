@@ -1,10 +1,13 @@
 # Re-Store
 > *  Bir **ASP.NET Core Web API** tüketen içerisinde `ürün`, `sepet`, `sipariş` ve `ödeme` fonksiyonlarının olduğu ilk **React** uygulamam
-> *  Tamamlanma Oranı: **%85**
+> *  Tamamlanma Oranı: **%100**
+> *  Kursu tamamlasam da yeni öğrendiğim bilgilerle projemi güncelleme niyetim devam edecektir.
 
 ## İzlence
+> * Veri tabanı tohumlandı.
 > * Ürünlerin listelendiği Catalog sayfası oluşturuldu.
 > * Ürün detay sayfası oluşturuldu.
+> * Admin rolü ürün ekleme, çıkarma ve güncelleme fonksiyonlarıyla yetkilendirildi.
 > * Üye olmayan veya giriş yapmayan kullanıcı için sepet oluştarabilmesine olanak sağlayan buyerId cookie olarak eklendi.
 > * Kullanıcı giriş yaptığında bir buyerId varsa bu cooike direkt kullanıcı adına dönüşür.
 > * Ürün ekleme, çıkarma ve toplam fiyat fonksiyonlarıyla birlikte sepet eklendi.
@@ -60,3 +63,15 @@
 <br/>
 
 <img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset6.png" alt="Payments" title="Payments">
+
+<br/>
+
+<img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset7.1.png" alt="Inventory" title="Inventory">
+
+<br/>
+
+<img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset7.2.png" alt="Inventory" title="Inventory">
+
+<br/>
+
+<img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset7.3.png" alt="Inventory" title="Inventory">

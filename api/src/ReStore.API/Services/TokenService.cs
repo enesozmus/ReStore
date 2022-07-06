@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using ReStore.Application.DTOs;
 using ReStore.Domain.Entities;
@@ -12,22 +13,22 @@ public class TokenService
 {
      private readonly UserManager<AppUser> _userManager;
      private readonly IConfiguration _config;
+     private readonly IMapper _mapper;
 
-     public TokenService(UserManager<AppUser> userManager, IConfiguration config)
+     public TokenService(UserManager<AppUser> userManager, IConfiguration config, IMapper mapper)
      {
           _userManager = userManager;
           _config = config;
+          _mapper = mapper;
      }
 
-     public async Task<string> GenerateToken(LoginCommandResponse response)
+     public async Task<string> GenerateToken(AppUser user)
      {
           var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Email, response.Email),
-                new Claim(ClaimTypes.Name, response.UserName)
-            };
-
-          AppUser user = new();
+          {
+               new Claim(ClaimTypes.Email, user.Email),
+               new Claim(ClaimTypes.Name, user.UserName)
+          };
 
           var roles = await _userManager.GetRolesAsync(user);
 

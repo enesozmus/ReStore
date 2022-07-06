@@ -9,6 +9,7 @@ import { addBasketItemAsync, removeBasketItemAsync } from "../basket/basketSlice
 import { productSelectors, fetchProductAsync } from "./catalogSlice";
 
 export default function ProductDetails() {
+    
     const { basket, status } = useAppSelector(state => state.basket);
     const dispatch = useAppDispatch();
     const { id } = useParams<{ id: string }>();

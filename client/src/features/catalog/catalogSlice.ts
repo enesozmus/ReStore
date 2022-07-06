@@ -11,6 +11,7 @@ interface CatalogState {
     status: string;
     brands: string[];
     colors: string[];
+    categories: string[];
     productParams: ProductParams;
     metaData: MetaData | null;
 }
@@ -18,13 +19,18 @@ interface CatalogState {
 const productsAdapter = createEntityAdapter<Product>();
 
 function getAxiosParams(productParams: ProductParams) {
+
     const params = new URLSearchParams();
+
     params.append('pageNumber', productParams.pageNumber.toString());
     params.append('pageSize', productParams.pageSize.toString());
     params.append('orderBy', productParams.orderBy);
+
     if (productParams.searchTerm) params.append('searchTerm', productParams.searchTerm);
     if (productParams.brands.length > 0) params.append('brands', productParams.brands.toString());
     if (productParams.colors.length > 0) params.append('colors', productParams.colors.toString());
+    if (productParams.categories.length > 0) params.append('categories', productParams.categories.toString());
+
     return params;
 }
 
@@ -70,7 +76,8 @@ function initParams() {
         pageSize: 6,
         orderBy: 'name',
         brands: [],
-        colors: []
+        colors: [],
+        categories: [],
     }
 }
 
@@ -82,6 +89,7 @@ export const catalogSlice = createSlice({
         status: 'idle',
         brands: [],
         colors: [],
+        categories: [],
         productParams: initParams(),
         metaData: null
     }),
@@ -99,6 +107,14 @@ export const catalogSlice = createSlice({
         },
         resetProductParams: (state) => {
             state.productParams = initParams();
+        },
+        setProduct: (state, action) => {
+            productsAdapter.upsertOne(state, action.payload);
+            state.productsLoaded = false;
+        },
+        removeProduct: (state, action) => {
+            productsAdapter.removeOne(state, action.payload);
+            state.productsLoaded = false;
         }
     },
     extraReducers: (builder => {
@@ -131,6 +147,7 @@ export const catalogSlice = createSlice({
         builder.addCase(fetchFilters.fulfilled, (state, action) => {
             state.brands = action.payload.brands;
             state.colors = action.payload.colors;
+            state.categories = action.payload.categories;
             state.filtersLoaded = true;
             state.status = 'idle';
         });
@@ -143,4 +160,4 @@ export const catalogSlice = createSlice({
 
 export const productSelectors = productsAdapter.getSelectors((state: RootState) => state.catalog);
 
-export const {setProductParams, resetProductParams, setMetaData, setPageNumber} = catalogSlice.actions;
+export const {setProductParams, resetProductParams, setMetaData, setPageNumber, setProduct, removeProduct} = catalogSlice.actions;

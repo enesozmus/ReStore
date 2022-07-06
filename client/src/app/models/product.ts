@@ -4,9 +4,12 @@ export interface Product {
     description: string;
     price: number;
     pictureUrl: string;
-    brand: string;
+    brand?: string;
+    color?: string;
+    category?: string;
     quantityInStock?: number;
     createdDate: Date;
+    updatedDate: Date;
 }
 
 export interface ProductParams {
@@ -14,6 +17,7 @@ export interface ProductParams {
     searchTerm?: string;
     colors: string[];
     brands: string[];
+    categories: string[];
     pageNumber: number;
     pageSize: number;
 }
