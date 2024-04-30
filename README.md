@@ -1,7 +1,6 @@
 # Re-Store
 > *  Bir **ASP.NET Core Web API** tüketen içerisinde `ürün`, `sepet`, `sipariş` ve `ödeme` fonksiyonlarının olduğu ilk **React** uygulamam
 > *  Tamamlanma Oranı: **%100**
-> *  Kursu tamamlasam da yeni öğrendiğim bilgilerle projemi güncelleme niyetim devam edecektir.
 
 ## İzlence
 > * Veri tabanı tohumlandı.
@@ -19,8 +18,6 @@
 <br/>
 
 ## ASP.NET Core WEB API & React 18.1.0
-[Neil Cummings'in](https://www.udemy.com/user/neil-cummings-2/) `"Learn to build an e-commerce store with .Net, React & Redux"` Udemy Kursu takip edilerek geliştirilen Web Uygulaması
-
 
 <img src="https://github.com/enesozmus/Re-Store/blob/master/preview/asset1.png" alt="Swagger" title="Swagger">
 
